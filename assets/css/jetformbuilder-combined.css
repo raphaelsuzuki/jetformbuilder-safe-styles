@@ -1,0 +1,266 @@
+/* JetFormBuilder — Combined safe stylesheet
+   - Merges expanded-safe form styles + action button styles
+   - Scoped to form.jet-form-builder / .jet-form-builder
+   - No :root leakage, no color-mix, no pointer-events
+   - Drop an overriding file named "jetformbuilder-combined.css" into your child theme root to customize.
+*/
+
+/* Scoped variables and base container */
+form.jet-form-builder,
+.jet-form-builder {
+  --jfb-bg: #ffffff;
+  --jfb-foreground: #222222;
+  --jfb-border: #e5e7eb;
+  --jfb-accent: #0071a1;
+  --jfb-accent-foreground: #ffffff; /* default button text color */
+  --jfb-error: #dc2626;
+  --jfb-radius: 6px;
+  --jfb-gap: 1rem;
+  --jfb-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --jfb-font-size: 16px;
+  box-sizing: border-box;
+}
+
+form.jet-form-builder {
+  font-family: var(--jfb-font-family);
+  font-size: var(--jfb-font-size);
+  color: var(--jfb-foreground);
+  background: var(--jfb-bg);
+  width: 100%;
+  line-height: 1.35;
+}
+
+/* Inputs / textarea / select */
+form.jet-form-builder input[type="text"],
+form.jet-form-builder input[type="email"],
+form.jet-form-builder input[type="tel"],
+form.jet-form-builder input[type="url"],
+form.jet-form-builder input[type="number"],
+form.jet-form-builder input:not([type]),
+form.jet-form-builder textarea,
+form.jet-form-builder select,
+.jet-form-builder input[type="text"],
+.jet-form-builder input[type="email"],
+.jet-form-builder textarea,
+.jet-form-builder select {
+  width: 100%;
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--jfb-border);
+  border-radius: var(--jfb-radius);
+  background: #fff;
+  color: var(--jfb-foreground);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+form.jet-form-builder textarea,
+.jet-form-builder textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form.jet-form-builder input:focus,
+form.jet-form-builder textarea:focus,
+form.jet-form-builder select:focus,
+.jet-form-builder input:focus,
+.jet-form-builder textarea:focus,
+.jet-form-builder select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+/* Submit buttons */
+form.jet-form-builder input[type="submit"],
+form.jet-form-builder button[type="submit"],
+form.jet-form-builder .jfb-submit,
+.jet-form-builder input[type="submit"],
+.jet-form-builder button[type="submit"],
+.jet-form-builder .jfb-submit {
+  display: inline-block;
+  background-color: var(--jfb-accent);
+  color: var(--jfb-accent-foreground);
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: calc(var(--jfb-radius) * 0.9);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+form.jet-form-builder input[type="submit"]:hover,
+form.jet-form-builder button[type="submit"]:hover,
+form.jet-form-builder .jfb-submit:hover,
+.jet-form-builder input[type="submit"]:hover,
+.jet-form-builder button[type="submit"]:hover,
+.jet-form-builder .jfb-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  background-color: rgba(0,96,128,0.95);
+}
+
+/* Messages area */
+form.jet-form-builder .jet-form-builder-messages-wrap,
+.jet-form-builder .jet-form-builder-messages-wrap {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+form.jet-form-builder .jet-form-builder-message,
+.jet-form-builder .jet-form-builder-message {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--jfb-radius);
+  font-size: 0.95rem;
+}
+
+form.jet-form-builder .jet-form-builder-message--success,
+.jet-form-builder .jet-form-builder-message--success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid rgba(6,95,70,0.08);
+}
+
+form.jet-form-builder .jet-form-builder-message--error,
+.jet-form-builder .jet-form-builder-message--error {
+  background: #fff1f2;
+  color: var(--jfb-error);
+  border: 1px solid rgba(220,38,38,0.08);
+}
+
+/* Field-level errors */
+form.jet-form-builder .jfb-field--error,
+form.jet-form-builder .jet-form-builder-field--error,
+.jet-form-builder .jfb-field--error {
+  border-left: 3px solid var(--jfb-error);
+  padding-left: calc(0.65rem - 3px);
+}
+
+form.jet-form-builder .jfb-error-text,
+form.jet-form-builder .jet-form-builder-error,
+.jet-form-builder .jfb-error-text {
+  color: var(--jfb-error);
+  font-size: 0.875rem;
+  margin-top: 0.35rem;
+}
+
+/* Rows / responsive layout */
+form.jet-form-builder .jfb-row,
+.jet-form-builder .jfb-row {
+  display: flex;
+  gap: var(--jfb-gap);
+  flex-wrap: wrap;
+}
+
+form.jet-form-builder .jfb-row > *,
+.jet-form-builder .jfb-row > * {
+  flex: 1 1 0;
+  min-width: 220px;
+}
+
+@media (max-width: 640px) {
+  form.jet-form-builder,
+  .jet-form-builder { --jfb-gap: 0.75rem; }
+  form.jet-form-builder .jfb-row,
+  .jet-form-builder .jfb-row { flex-direction: column; }
+}
+
+/* Small helper */
+form.jet-form-builder .jfb-required,
+.jet-form-builder .jfb-required { color: var(--jfb-accent); margin-left: 0.25rem; font-weight: 600; }
+
+/* Reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* =========================
+   Action button styles
+   Targets .jet-form-builder__action-button and wrapper
+   ========================= */
+
+/* Wrapper layout */
+form.jet-form-builder .jet-form-builder__action-button-wrapper,
+.jet-form-builder .jet-form-builder__action-button-wrapper {
+  display: inline-block;
+  margin: 0.25rem 0;
+}
+
+/* Primary action button */
+form.jet-form-builder .jet-form-builder__action-button,
+.jet-form-builder .jet-form-builder__action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1;
+  color: var(--jfb-accent-foreground, #ffffff);
+  background: var(--jfb-accent, #0071a1);
+  border: 0;
+  border-radius: calc(var(--jfb-radius, 6px) * 0.9);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  -webkit-appearance: none;
+  white-space: nowrap;
+}
+
+/* Prev (muted) modifier */
+form.jet-form-builder .jet-form-builder__action-button.jet-form-builder__prev-page,
+.jet-form-builder .jet-form-builder__action-button.jet-form-builder__prev-page {
+  background: transparent;
+  color: var(--jfb-foreground, #222);
+  border: 1px solid var(--jfb-border, #e5e7eb);
+  box-shadow: none;
+}
+
+/* Next (primary) modifier if present */
+form.jet-form-builder .jet-form-builder__action-button.jet-form-builder__next-page,
+.jet-form-builder .jet-form-builder__action-button.jet-form-builder__next-page {
+  background: var(--jfb-accent, #0071a1);
+  color: var(--jfb-accent-foreground, #fff);
+}
+
+/* Hover / focus */
+form.jet-form-builder .jet-form-builder__action-button:hover,
+form.jet-form-builder .jet-form-builder__action-button:focus,
+.jet-form-builder .jet-form-builder__action-button:hover,
+.jet-form-builder .jet-form-builder__action-button:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  outline: none;
+}
+
+/* Muted hover for prev */
+form.jet-form-builder .jet-form-builder__action-button.jet-form-builder__prev-page:hover,
+.jet-form-builder .jet-form-builder__action-button.jet-form-builder__prev-page:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+/* Disabled */
+form.jet-form-builder .jet-form-builder__action-button[disabled],
+.jet-form-builder .jet-form-builder__action-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Small / compact variant */
+form.jet-form-builder .jet-form-builder__action-button.jfb-small,
+.jet-form-builder .jet-form-builder__action-button.jfb-small {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+/* Accessible focus-visible */
+form.jet-form-builder .jet-form-builder__action-button:focus-visible,
+.jet-form-builder .jet-form-builder__action-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
