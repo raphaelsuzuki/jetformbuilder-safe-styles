@@ -1,7 +1,6 @@
 <?php
 /**
  * Plugin Name: JetFormBuilder Safe Styles
- * Plugin URI:  https://example.com/jetformbuilder-safe-styles
  * Description: Adds a safe, scoped stylesheet for JetFormBuilder forms. Child-theme override supported via /jetformbuilder-combined.css.
  * Version:     1.0.0
  * Author:      raphaelsuzuki
